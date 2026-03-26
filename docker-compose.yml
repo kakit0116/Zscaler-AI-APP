@@ -1,0 +1,36 @@
+services:
+  ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile.ingest
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data:rw
+      - ./faiss_store:/app/faiss_store:rw
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./faiss_store:/app/faiss_store:rw
+    depends_on:
+      - ingest
+    restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    restart: unless-stopped
+
