@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY . .
 
 # 3. 話畀 AWS 聽我哋用 8080 port
-EXPOSE 8080
+EXPOSE 8501
 
 # 4. 啟動 Streamlit
 # 注意：一定要加 --server.address 0.0.0.0，否則外網入唔到
