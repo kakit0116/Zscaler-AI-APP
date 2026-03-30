@@ -15,7 +15,7 @@ load_dotenv()
 
 PROXY_URL = os.getenv("PROXY_URL", "https://proxy.us1.zseclipse.net/v1/chat/completions")
 PROXY_API_KEY = os.getenv("PROXY_API_KEY", "")
-MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4.1-mini")
+MODEL_NAME = os.getenv("MODEL_NAME", "gemini-2.5-flash")
 
 FAISS_DIR = os.getenv("FAISS_DIR", "faiss_store")
 
